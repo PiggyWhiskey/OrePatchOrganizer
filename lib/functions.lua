@@ -169,7 +169,7 @@ function On_Player_Selected_Area(event)
         end
 
         --Loop all resources in Event
-        for _, resource in pairs(event.entities) do
+                for _, resource in pairs(event.entities) do
             -- 1. Populate 'Category' with resource type (basic-solid, basic-fluid, oil, kr-quarry etc)
             --Validate Category for initial collection
             --If/Then/End to prevent excessive reuse when looping entities
@@ -181,6 +181,38 @@ function On_Player_Selected_Area(event)
                         resource.prototype.resource_category == 'kr-quarry' or                     --K2 Quarry
                         resource.prototype.resource_category == 'vtk-deepcore-mining-crack' or     --Vortek Deep Core Mining p.1
                         resource.prototype.resource_category == 'vtk-deepcore-mining-ore-patch' or --Vortek Deep Core Mining p.2
+                        --Py Ores
+                        resource.prototype.resource_category == 'antimonnium' or
+                        resource.prototype.resource_category == 'basic-with-fluid' or
+                        resource.prototype.resource_category == 'borax' or
+                        resource.prototype.resource_category == 'molybdenum' or
+                        resource.prototype.resource_category == 'niobium' or
+                        resource.prototype.resource_category == 'oil-sand' or
+                        resource.prototype.resource_category == 'ore-bioreserve' or
+                        resource.prototype.resource_category == 'ore-nexelit' or
+                        resource.prototype.resource_category == 'ore-quartz' or
+                        resource.prototype.resource_category == 'phosphate' or
+                        resource.prototype.resource_category == 'rare-earth' or
+                        resource.prototype.resource_category == 'ree' or
+                        --Py Ore Reserves
+                        resource.prototype.resource_category == 'aluminium-rock' or
+                        resource.prototype.resource_category == 'chromium-rock' or
+                        resource.prototype.resource_category == 'coal-rock' or
+                        resource.prototype.resource_category == 'copper-rock' or
+                        resource.prototype.resource_category == 'iron-rock' or
+                        resource.prototype.resource_category == 'nexelit-rock' or
+                        resource.prototype.resource_category == 'nickel-rock' or
+                        resource.prototype.resource_category == 'quartz-rock' or
+                        resource.prototype.resource_category == 'regolite' or
+                        resource.prototype.resource_category == 'salt-rock' or
+                        resource.prototype.resource_category == 'sulfur-patch' or
+                        resource.prototype.resource_category == 'tin-rock' or
+                        resource.prototype.resource_category == 'titanium-rock' or
+                        resource.prototype.resource_category == 'uranium-rock' or
+                        resource.prototype.resource_category == 'zinc-rock' or
+
+
+
                         false then
                         --[[
                             TODO:
@@ -198,6 +230,10 @@ function On_Player_Selected_Area(event)
                 if Resource_Organizer.AllowFluids then
                     if resource.prototype.resource_category == 'basic-fluid' or --Vanilla Fluid
                         resource.prototype.resource_category == 'oil' or        --K2 Oil
+                        --Py Fluids
+                        resource.prototype.resource_category == 'natural-gas' or
+                        resource.prototype.resource_category == 'bitumen-seep' or
+                        resource.prototype.resource_category == 'geothermal-crack' or
                         false then
                         --Only set category if Resource is approved fluid for collection
                         Resource_Organizer.Category = resource.prototype.resource_category
@@ -214,6 +250,19 @@ function On_Player_Selected_Area(event)
                     --Set if resource is Spaced (Oil patches/some modded types) or Spread (Raw Ores)
                     if Resource_Organizer.Category == 'basic-solid' or
                         Resource_Organizer.Category == 'hard-resource' or
+                        --Py Ores
+                        Resource_Organizer.Category == 'antimonnium' or
+                        Resource_Organizer.Category == 'basic-with-fluid' or
+                        Resource_Organizer.Category == 'borax' or
+                        Resource_Organizer.Category == 'molybdenum' or
+                        Resource_Organizer.Category == 'niobium' or
+                        Resource_Organizer.Category == 'oil-sand' or
+                        Resource_Organizer.Category == 'ore-bioreserve' or
+                        Resource_Organizer.Category == 'ore-nexelit' or
+                        Resource_Organizer.Category == 'ore-quartz' or
+                        Resource_Organizer.Category == 'phosphate' or
+                        Resource_Organizer.Category == 'rare-earth' or
+                        Resource_Organizer.Category == 'ree' or
                         false then
                         Resource_Organizer.Handler = 'spread'
                     elseif Resource_Organizer.Category == 'basic-fluid' or
@@ -222,6 +271,28 @@ function On_Player_Selected_Area(event)
                         Resource_Organizer.Category == 'vtk-deepcore-mining-crack' or
                         Resource_Organizer.Category == 'vtk-deepcore-mining-ore-patch' or
                         Resource_Organizer.Category == 'kr-quarry' or
+                        --Py Ore Rocks
+                        Resource_Organizer.Category == 'aluminium-rock' or
+                        Resource_Organizer.Category == 'chromium-rock' or
+                        Resource_Organizer.Category == 'coal-rock' or
+                        Resource_Organizer.Category == 'copper-rock' or
+                        Resource_Organizer.Category == 'iron-rock' or
+                        Resource_Organizer.Category == 'nexelit-rock' or
+                        Resource_Organizer.Category == 'nickel-rock' or
+                        Resource_Organizer.Category == 'quartz-rock' or
+                        Resource_Organizer.Category == 'regolite' or
+                        Resource_Organizer.Category == 'salt-rock' or
+                        Resource_Organizer.Category == 'sulfur-patch' or
+                        Resource_Organizer.Category == 'tin-rock' or
+                        Resource_Organizer.Category == 'titanium-rock' or
+                        Resource_Organizer.Category == 'uranium-rock' or
+                        Resource_Organizer.Category == 'zinc-rock' or
+                        --Py Fluids
+                        Resource_Organizer.Category == 'natural-gas' or
+                        Resource_Organizer.Category == 'bitumen-seep' or
+                        Resource_Organizer.Category == 'geothermal-crack' or
+
+                        
                         false then
                         Resource_Organizer.Handler = 'spaced'
                     end
